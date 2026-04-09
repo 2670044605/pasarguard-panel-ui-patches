@@ -11,16 +11,21 @@ Deploy a custom PasarGuard panel image with a minimal UI patch while keeping bac
 ## Requirements
 - Docker daemon available on target host
 - BuildKit enabled for image build (`DOCKER_BUILDKIT=1`)
-- `bun` available only if you want to build frontend outside Docker; the official image build path does not require host-side bun during `docker build`
+- `bun` available on the build host, because `dashboard/build` must be prebuilt before packaging the image
 
-## Steps
+## Correct build order
 1. Clone upstream source at fixed ref.
 2. Apply `patches/0001-minimal-ui-debranding.patch`.
-3. Build custom Docker image with BuildKit enabled.
-4. Backup current compose file on server.
-5. Replace PasarGuard image reference in compose.
-6. Restart only the `pasarguard` service.
-7. Verify login page and dashboard UI.
+3. Run `bun install` inside `dashboard/`.
+4. Run `./build_dashboard.sh` to generate `dashboard/build`.
+5. Build custom Docker image with BuildKit enabled.
+6. Backup current compose file on server.
+7. Replace PasarGuard image reference in compose.
+8. Restart only the `pasarguard` service.
+9. Verify login page and dashboard UI.
+
+## Why prebuild is required
+The upstream app will attempt to call `bun` at runtime if `dashboard/build` is missing. The runtime image does not include `bun`, so a production image without prebuilt dashboard assets will fail to start.
 
 ## Rollback
 Restore the previous `docker-compose.yml` backup and run:

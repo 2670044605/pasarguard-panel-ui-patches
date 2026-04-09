@@ -2,6 +2,11 @@
 
 All notable changes to this patch repository will be documented in this file.
 
+## [0.2.2] - 2026-04-09
+### Fixed
+- Custom image build flow now explicitly prebuilds `dashboard/build` before Docker packaging.
+- Deployment notes now document that runtime startup fails if dashboard assets are not prebuilt.
+
 ## [0.2.1] - 2026-04-09
 ### Changed
 - Deployment/build workflow now explicitly enables Docker BuildKit because upstream Dockerfile uses `RUN --mount=...`.

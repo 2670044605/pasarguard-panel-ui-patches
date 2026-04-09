@@ -35,6 +35,8 @@ git apply patches/0001-minimal-ui-debranding.patch
 sh scripts/build-custom-image.sh
 ```
 
+This build helper now performs the required frontend prebuild (`bun install` + `./build_dashboard.sh`) before Docker packaging.
+
 ## Deploy on server
 
 ```bash
@@ -56,3 +58,4 @@ TARGET_IMAGE=local/pasarguard-panel-ui:3d749e0-jl1 sh scripts/deploy-on-server.s
 ## Notes
 - This patch intentionally avoids backend, DB, API, auth, and routing changes.
 - Recommended deployment mode: fixed upstream commit + minimal patch + custom image.
+- Do not skip frontend prebuild when deriving the production image.

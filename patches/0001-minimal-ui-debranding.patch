@@ -1,0 +1,149 @@
+diff --git a/dashboard/src/components/layout/footer.tsx b/dashboard/src/components/layout/footer.tsx
+index 0517579..e369c0f 100644
+--- a/dashboard/src/components/layout/footer.tsx
++++ b/dashboard/src/components/layout/footer.tsx
+@@ -1,22 +1,5 @@
+-import { REPO_URL } from '@/constants/Project'
+ import { FC } from 'react'
+ 
+-const FooterContent = () => {
+-  return (
+-    <p className="inline-block flex-grow text-center text-xs text-gray-500">
+-      Made with ❤️ by &nbsp;
+-      <a className="text-blue-400" href={REPO_URL}>
+-        PasarGuard
+-      </a>{' '}
+-      Team
+-    </p>
+-  )
+-}
+-
+ export const Footer: FC = ({ ...props }) => {
+-  return (
+-    <div className="relative flex w-full pb-3 pt-1" {...props}>
+-      <FooterContent />
+-    </div>
+-  )
++  return <div className="hidden" {...props} />
+ }
+diff --git a/dashboard/src/components/layout/sidebar.tsx b/dashboard/src/components/layout/sidebar.tsx
+index 8fa8195..9bfbe3b 100644
+--- a/dashboard/src/components/layout/sidebar.tsx
++++ b/dashboard/src/components/layout/sidebar.tsx
+@@ -2,7 +2,6 @@ import { Language } from '@/components/common/language'
+ import Snowfall from '@/components/common/snowfall'
+ import { useTheme } from '@/components/common/theme-provider'
+ import { ThemeToggle } from '@/components/common/theme-toggle'
+-import { GithubStar } from '@/components/layout/github-star'
+ import { GoalProgress } from '@/components/layout/goal-progress'
+ import { NavMain } from '@/components/layout/nav-main'
+ import { NavSecondary } from '@/components/layout/nav-secondary'
+@@ -12,7 +11,7 @@ import { VersionBadge } from '@/components/layout/version-badge'
+ import { Button } from '@/components/ui/button'
+ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail, useSidebar } from '@/components/ui/sidebar'
+ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+-import { DISCUSSION_GROUP, DOCUMENTATION, DONATION_URL, REPO_URL } from '@/constants/Project'
++import { REPO_URL } from '@/constants/Project'
+ import { useAdmin } from '@/hooks/use-admin'
+ import useDirDetection from '@/hooks/use-dir-detection'
+ import { useSystemVersion } from '@/hooks/use-system-version'
+@@ -21,16 +20,13 @@ import { cn } from '@/lib/utils'
+ import {
+   ArrowUpDown,
+   Bell,
+-  BookOpen,
+   Calendar,
+   Cpu,
+   Database,
+   FileText,
+-  GithubIcon,
+   Layers,
+   LayoutDashboardIcon,
+   LayoutTemplate,
+-  LifeBuoy,
+   ListTodo,
+   Lock,
+   MessageCircle,
+@@ -38,7 +34,6 @@ import {
+   PanelLeftClose,
+   PanelLeftOpen,
+   PieChart,
+-  RssIcon,
+   Send,
+   Settings,
+   Settings2,
+@@ -288,34 +283,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+             },
+           ]),
+     ],
+-    navSecondary: [
+-      {
+-        title: t('supportUs'),
+-        url: DONATION_URL,
+-        icon: LifeBuoy,
+-        target: '_blank',
+-      },
+-    ],
+-    community: [
+-      {
+-        title: 'documentation',
+-        url: DOCUMENTATION,
+-        icon: BookOpen,
+-        target: '_blank',
+-      },
+-      {
+-        title: 'discussionGroup',
+-        url: DISCUSSION_GROUP,
+-        icon: RssIcon,
+-        target: '_blank',
+-      },
+-      {
+-        title: 'github',
+-        url: REPO_URL,
+-        icon: GithubIcon,
+-        target: '_blank',
+-      },
+-    ],
++    navSecondary: [],
++    community: [],
+   }
+ 
+   return (
+@@ -472,24 +441,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+           <NavSecondary items={data.navSecondary} className="mt-auto" />
+           <GoalProgress />
+           <div className="flex items-center justify-between px-2 [&>:first-child]:[direction:ltr]">
+-            {state !== 'collapsed' && <GithubStar />}
+-            {state !== 'collapsed' && (
+-              <div className="flex items-start gap-2">
+-                <Language />
+-                <ThemeToggle />
+-              </div>
+-            )}
+-            {state === 'collapsed' && isMobile && (
+-              <>
+-                <GithubStar />
+-
+-                <div className="flex items-start gap-2">
+-                  <Language />
+-                  <ThemeToggle />
+-                </div>
+-              </>
+-            )}
+-          </div>
++          {state !== 'collapsed' && (
++            <div className="flex items-start gap-2 ml-auto">
++              <Language />
++              <ThemeToggle />
++            </div>
++          )}
++          {state === 'collapsed' && isMobile && (
++            <div className="flex items-start gap-2 ml-auto">
++              <Language />
++              <ThemeToggle />
++            </div>
++          )}
++        </div>
+         </SidebarContent>
+         <SidebarFooter>
+           <NavUser admin={admin} username={data?.user} />

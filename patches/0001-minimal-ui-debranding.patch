@@ -27,7 +27,7 @@ index 0517579..e369c0f 100644
 +  return <div className="hidden" {...props} />
  }
 diff --git a/dashboard/src/components/layout/sidebar.tsx b/dashboard/src/components/layout/sidebar.tsx
-index 8fa8195..60a0b4b 100644
+index 8fa8195..1c29131 100644
 --- a/dashboard/src/components/layout/sidebar.tsx
 +++ b/dashboard/src/components/layout/sidebar.tsx
 @@ -2,7 +2,6 @@ import { Language } from '@/components/common/language'
@@ -109,16 +109,14 @@ index 8fa8195..60a0b4b 100644
    }
  
    return (
-@@ -468,28 +437,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+@@ -468,27 +437,24 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
          </SidebarHeader>
          <SidebarContent>
            <NavMain items={data.navMain} />
 -          {admin?.is_sudo && <NavSecondary items={data.community} label={t('community')} />}
 -          <NavSecondary items={data.navSecondary} className="mt-auto" />
-+          {admin?.is_sudo && data.community.length > 0 && <NavSecondary items={data.community} label={t('community')} />}
-+          {data.navSecondary.length > 0 && <NavSecondary items={data.navSecondary} className="mt-auto" />}
-           <GoalProgress />
-           <div className="flex items-center justify-between px-2 [&>:first-child]:[direction:ltr]">
+-          <GoalProgress />
+-          <div className="flex items-center justify-between px-2 [&>:first-child]:[direction:ltr]">
 -            {state !== 'collapsed' && <GithubStar />}
 -            {state !== 'collapsed' && (
 -              <div className="flex items-start gap-2">
@@ -130,26 +128,27 @@ index 8fa8195..60a0b4b 100644
 -              <>
 -                <GithubStar />
 -
--                <div className="flex items-start gap-2">
--                  <Language />
--                  <ThemeToggle />
--                </div>
++          <div className="mt-auto flex flex-col gap-2">
++            {admin?.is_sudo && data.community.length > 0 && <NavSecondary items={data.community} label={t('community')} />}
++            {data.navSecondary.length > 0 && <NavSecondary items={data.navSecondary} />}
++            <GoalProgress />
++            <div className="flex items-center justify-end px-2 [&>:first-child]:[direction:ltr]">
++              {state !== 'collapsed' && (
++                <div className="flex items-start gap-2">
++                  <Language />
++                  <ThemeToggle />
++                </div>
++              )}
++              {state === 'collapsed' && isMobile && (
+                 <div className="flex items-start gap-2">
+                   <Language />
+                   <ThemeToggle />
+                 </div>
 -              </>
 -            )}
--          </div>
-+          {state !== 'collapsed' && (
-+            <div className="flex items-start gap-2 ml-auto">
-+              <Language />
-+              <ThemeToggle />
++              )}
 +            </div>
-+          )}
-+          {state === 'collapsed' && isMobile && (
-+            <div className="flex items-start gap-2 ml-auto">
-+              <Language />
-+              <ThemeToggle />
-+            </div>
-+          )}
-+        </div>
+           </div>
          </SidebarContent>
          <SidebarFooter>
            <NavUser admin={admin} username={data?.user} />

@@ -16,6 +16,10 @@ Keep the panel visually cleaner while minimizing future merge pain.
 - Empty sidebar `Community` section title after link removal
 - Footer text `Made with ❤️ by PasarGuard Team`
 
+## Layout behavior
+- The language/theme controls remain anchored in the bottom section of the sidebar.
+- The empty community block is not rendered at all.
+
 ## Files modified
 - `dashboard/src/components/layout/sidebar.tsx`
 - `dashboard/src/components/layout/footer.tsx`
@@ -36,5 +40,6 @@ Low. Future upstream upgrades should only require checking whether `sidebar.tsx`
 - Users / Nodes / Settings pages open normally
 - No community/support/star block is visible
 - No empty `Community` title remains
+- Language/theme controls stay in the bottom area
 - Footer credit is hidden
 - No obvious frontend runtime error

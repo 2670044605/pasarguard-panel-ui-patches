@@ -2,6 +2,11 @@
 
 All notable changes to this patch repository will be documented in this file.
 
+## [0.3.2] - 2026-04-09
+### Fixed
+- Keep the language/theme controls anchored in the bottom area instead of visually floating upward.
+- Ensure the empty `Community` section is not rendered at all.
+
 ## [0.3.1] - 2026-04-09
 ### Fixed
 - Hide the empty sidebar `Community` section title after removing all community links.

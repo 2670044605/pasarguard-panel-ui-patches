@@ -9,3 +9,5 @@
 - 当前 `gh auth status` 显示已登录，可直接创建与推送仓库。
 - 目标仓库名 `pasarguard-panel-ui-patches` 当前未占用。
 - 首版补丁已按可复用 `git diff` 形式落盘。
+- PasarGuard 非 debug 模式下若 `dashboard/build` 不存在，会在应用启动时尝试调用 `bun` 构建前端；生产自定义镜像更稳妥的做法仍是预先 `docker build` 出完整镜像。
+- 当前远端 `digitalocean-sg` 上 PasarGuard 以 `docker compose` 运行，切换镜像只需更新 compose 中 `pasarguard` 服务的 image 字段并重启该服务。

@@ -2,6 +2,12 @@
 
 All notable changes to this patch repository will be documented in this file.
 
+## [0.2.0] - 2026-04-09
+### Added
+- Deployment document for custom patched image rollout.
+- Build script for deriving a custom PasarGuard image from fixed upstream source.
+- Server-side deployment helper script for switching the compose image safely.
+
 ## [0.1.0] - 2026-04-09
 ### Added
 - Initial patch repository for PasarGuard panel UI customization.

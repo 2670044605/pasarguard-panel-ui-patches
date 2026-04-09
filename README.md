@@ -19,6 +19,7 @@ This repository keeps a small, reviewable patch set for PasarGuard panel UI chan
 ## Repository layout
 - `patches/` — reusable patch files
 - `docs/` — patch notes and maintenance docs
+- `scripts/` — image build and deployment helpers
 - `CHANGELOG.md` — human-readable change log
 
 ## Apply patch
@@ -26,6 +27,18 @@ From a clean checkout of upstream baseline:
 
 ```bash
 git apply patches/0001-minimal-ui-debranding.patch
+```
+
+## Build custom image
+
+```bash
+sh scripts/build-custom-image.sh
+```
+
+## Deploy on server
+
+```bash
+TARGET_IMAGE=local/pasarguard-panel-ui:3d749e0-jl1 sh scripts/deploy-on-server.sh
 ```
 
 ## Files touched by patch
@@ -38,6 +51,7 @@ git apply patches/0001-minimal-ui-debranding.patch
 3. Update docs and changelog
 4. Commit
 5. Push to GitHub
+6. Rebuild custom image and redeploy
 
 ## Notes
 - This patch intentionally avoids backend, DB, API, auth, and routing changes.

@@ -2,6 +2,11 @@
 
 All notable changes to this patch repository will be documented in this file.
 
+## [0.2.1] - 2026-04-09
+### Changed
+- Deployment/build workflow now explicitly enables Docker BuildKit because upstream Dockerfile uses `RUN --mount=...`.
+- Deployment notes now document the BuildKit requirement.
+
 ## [0.2.0] - 2026-04-09
 ### Added
 - Deployment document for custom patched image rollout.

@@ -13,6 +13,6 @@ git clone "$UPSTREAM_REPO" "$WORKDIR"
 cd "$WORKDIR"
 git checkout "$UPSTREAM_REF"
 git apply "$PATCH_FILE"
-docker build -t "$IMAGE_TAG" .
+DOCKER_BUILDKIT=1 docker build -t "$IMAGE_TAG" .
 
 echo "Built image: $IMAGE_TAG"

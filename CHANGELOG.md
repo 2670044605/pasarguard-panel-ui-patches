@@ -2,6 +2,14 @@
 
 All notable changes to this patch repository will be documented in this file.
 
+## [0.3.0] - 2026-04-09
+### Added
+- Successful production deployment record for `digitalocean-sg`.
+
+### Changed
+- Deployment workflow verified in production.
+- Active production image is now `local/pasarguard-panel-ui:3d749e0-jl1` on `digitalocean-sg`.
+
 ## [0.2.2] - 2026-04-09
 ### Fixed
 - Custom image build flow now explicitly prebuilds `dashboard/build` before Docker packaging.

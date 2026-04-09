@@ -9,6 +9,7 @@ This repository keeps a small, reviewable patch set for PasarGuard panel UI chan
 - Remove sidebar community links (`Documentation`, `Discussion Group`, `GitHub`)
 - Remove sidebar `Support Us`
 - Remove sidebar `Star` button
+- Hide the empty sidebar `Community` section title when its items are removed
 - Hide footer credit `Made with ❤️ by PasarGuard Team`
 
 ## Upstream baseline

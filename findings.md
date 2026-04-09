@@ -13,3 +13,4 @@
 - 当前远端 `digitalocean-sg` 上 PasarGuard 以 `docker compose` 运行，切换镜像只需更新 compose 中 `pasarguard` 服务的 image 字段并重启该服务。
 - 实际部署验证发现：仅构建 Python 镜像而未把 `dashboard/build` 预构建进镜像，会导致容器启动时尝试执行 `bun`，进而因为运行时镜像无 `bun` 而启动失败。
 - 因此正确生产流程应为：先在源码树中完成 dashboard 前端构建，再执行 Docker BuildKit 镜像构建。
+- 当前还需额外防止 `community` 数组为空时仍渲染空标题；仅把项目列表置空并不足以完全隐藏该区块。

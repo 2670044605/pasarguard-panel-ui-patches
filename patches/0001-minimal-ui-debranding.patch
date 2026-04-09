@@ -27,7 +27,7 @@ index 0517579..e369c0f 100644
 +  return <div className="hidden" {...props} />
  }
 diff --git a/dashboard/src/components/layout/sidebar.tsx b/dashboard/src/components/layout/sidebar.tsx
-index 8fa8195..9bfbe3b 100644
+index 8fa8195..60a0b4b 100644
 --- a/dashboard/src/components/layout/sidebar.tsx
 +++ b/dashboard/src/components/layout/sidebar.tsx
 @@ -2,7 +2,6 @@ import { Language } from '@/components/common/language'
@@ -109,8 +109,14 @@ index 8fa8195..9bfbe3b 100644
    }
  
    return (
-@@ -472,24 +441,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-           <NavSecondary items={data.navSecondary} className="mt-auto" />
+@@ -468,28 +437,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+         </SidebarHeader>
+         <SidebarContent>
+           <NavMain items={data.navMain} />
+-          {admin?.is_sudo && <NavSecondary items={data.community} label={t('community')} />}
+-          <NavSecondary items={data.navSecondary} className="mt-auto" />
++          {admin?.is_sudo && data.community.length > 0 && <NavSecondary items={data.community} label={t('community')} />}
++          {data.navSecondary.length > 0 && <NavSecondary items={data.navSecondary} className="mt-auto" />}
            <GoalProgress />
            <div className="flex items-center justify-between px-2 [&>:first-child]:[direction:ltr]">
 -            {state !== 'collapsed' && <GithubStar />}

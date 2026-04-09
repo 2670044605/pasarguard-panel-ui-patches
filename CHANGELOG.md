@@ -2,6 +2,10 @@
 
 All notable changes to this patch repository will be documented in this file.
 
+## [0.3.1] - 2026-04-09
+### Fixed
+- Hide the empty sidebar `Community` section title after removing all community links.
+
 ## [0.3.0] - 2026-04-09
 ### Added
 - Successful production deployment record for `digitalocean-sg`.

@@ -13,6 +13,7 @@ Keep the panel visually cleaner while minimizing future merge pain.
   - GitHub
 - Sidebar `Support Us`
 - Sidebar `Star` button
+- Empty sidebar `Community` section title after link removal
 - Footer text `Made with ❤️ by PasarGuard Team`
 
 ## Files modified
@@ -34,5 +35,6 @@ Low. Future upstream upgrades should only require checking whether `sidebar.tsx`
 - Sidebar main navigation works
 - Users / Nodes / Settings pages open normally
 - No community/support/star block is visible
+- No empty `Community` title remains
 - Footer credit is hidden
 - No obvious frontend runtime error

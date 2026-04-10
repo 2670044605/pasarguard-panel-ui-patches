@@ -2,6 +2,10 @@
 
 All notable changes to this patch repository will be documented in this file.
 
+## [0.3.3] - 2026-04-10
+### Fixed
+- Disable the periodic donation/support popup (`DonationPopup`) in the dashboard layout.
+
 ## [0.3.2] - 2026-04-09
 ### Fixed
 - Keep the language/theme controls anchored in the bottom area instead of visually floating upward.
